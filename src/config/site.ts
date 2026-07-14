@@ -10,6 +10,9 @@ export const siteConfig = {
     "The Kurinji",
     "PT Kurinji Virtual Nusantara",
     "Digital Ecosystem",
+    "Creative Technology",
+    "Digital Experience",
+    "Technology Company Indonesia",
     "Selalu Ajak",
     "Kenang Kurinji",
     "Kurinji Booth",
@@ -35,7 +38,6 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Ecosystem", href: "/ecosystem" },
     { label: "Blog", href: "/blog" },
