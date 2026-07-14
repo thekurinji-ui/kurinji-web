@@ -1,17 +1,8 @@
-import type { Product } from "@/types/product";
-
-/**
- * All ecosystem products live here, and only here.
- *
- * Adding a new product = adding one object to this array.
- * No component in src/components or src/app should need to change
- * as a result — they all render from this list.
- */
 export const products: Product[] = [
   {
     slug: "selalu-ajak",
     name: "Selalu Ajak",
-    tagline: "Platform undangan digital modern.",
+    tagline: "Digital invitation experience for meaningful moments.",
     url: "https://selaluajak.kurinji.asia",
     status: "active",
     socials: {
@@ -23,7 +14,7 @@ export const products: Product[] = [
   {
     slug: "kenang-kurinji",
     name: "Kenang Kurinji",
-    tagline: "Disposable camera experience.",
+    tagline: "Digital memory experience to preserve every story.",
     url: "https://kenang.kurinji.asia",
     status: "active",
     socials: {
@@ -35,21 +26,21 @@ export const products: Product[] = [
   {
     slug: "kurinji-booth",
     name: "Kurinji Booth",
-    tagline: "Photobooth platform.",
+    tagline: "Modern photobooth experience for unforgettable events.",
     url: "https://booth.kurinji.asia",
     status: "coming-soon",
   },
   {
     slug: "kurinji-music-nusantara",
     name: "Kurinji Music Nusantara",
-    tagline: "Music label.",
+    tagline: "A creative home for music and artistic expression.",
     url: "https://music.kurinji.asia",
     status: "coming-soon",
   },
   {
     slug: "kurinji-hub",
     name: "Kurinji Hub",
-    tagline: "Live streaming agency.",
+    tagline: "Connecting creators, talents, and brands through live experiences.",
     url: "https://hub.kurinji.asia",
     status: "coming-soon",
     socials: {
@@ -59,9 +50,3 @@ export const products: Product[] = [
     },
   },
 ];
-
-export const getProductBySlug = (slug: string): Product | undefined =>
-  products.find((product) => product.slug === slug);
-
-export const activeProducts = () => products.filter((p) => p.status === "active");
-export const upcomingProducts = () => products.filter((p) => p.status === "coming-soon");
