@@ -1,24 +1,43 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 
+import { Story } from "@/components/sections/story";
+import { Mission } from "@/components/sections/mission";
+import { Approach } from "@/components/sections/approach";
+import { Vision } from "@/components/sections/vision";
+import { Company } from "@/components/sections/company";
+
 export const metadata: Metadata = buildMetadata({
-  title: "About",
-  description: "Penjelasan mengenai The Kurinji dan filosofi di baliknya.",
+  title: "About The Kurinji",
+  description:
+    "Mengenal The Kurinji, ecosystem brand dari PT Kurinji Virtual Nusantara yang membangun produk digital dengan menggabungkan teknologi, kreativitas, dan pengalaman manusia.",
   path: "/about",
 });
 
 export default function AboutPage() {
   return (
-    <div className="container py-24">
-      <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">About</span>
-      <h1 className="mt-4 max-w-2xl font-heading text-4xl font-medium md:text-5xl">
-        Tentang The Kurinji
-      </h1>
-      <p className="mt-6 max-w-xl text-muted">
-        {/* TODO: Philosophy — makna bunga Neela Kurinji, mengapa nama ini dipilih,
-            dan nilai yang menjadi fondasi seluruh produk. */}
-        Konten filosofi perusahaan akan diisi di sini.
-      </p>
-    </div>
+    <>
+      <section className="container py-24">
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          About
+        </span>
+
+        <h1 className="mt-6 max-w-3xl font-heading text-4xl font-medium leading-tight md:text-6xl">
+          Membangun pengalaman digital yang memiliki arti.
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          The Kurinji adalah ecosystem brand dari PT Kurinji Virtual Nusantara
+          yang mengembangkan berbagai produk digital untuk membantu manusia
+          menciptakan, mengabadikan, dan membagikan momen berharga.
+        </p>
+      </section>
+
+      <Story />
+      <Mission />
+      <Approach />
+      <Vision />
+      <Company />
+    </>
   );
 }
