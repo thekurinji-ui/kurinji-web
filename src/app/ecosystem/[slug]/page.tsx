@@ -47,18 +47,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         </p>
 
         {isComingSoon ? (
-          <span className="mt-10 inline-flex rounded-full border border-mist px-7 py-3 text-sm font-medium text-muted">
-            Coming Soon
-          </span>
+          <span className="mt-10 inline-flex rounded-full border border-mist px-7 py-3 text-sm font-medium text-muted">Coming Soon</span>
         ) : (
-          
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 inline-flex rounded-full bg-ink px-7 py-3 text-sm text-paper transition-colors hover:bg-bloom-deep"
-          >
-            Visit {product.name}
-          </a>
+          <a href={product.url} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex rounded-full bg-ink px-7 py-3 text-sm text-paper transition-colors hover:bg-bloom-deep">Visit {product.name}</a>
         )}
       </section>
 
@@ -98,4 +89,4 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       )}
     </main>
   );
-      }
+}
