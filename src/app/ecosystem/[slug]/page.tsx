@@ -5,7 +5,7 @@ import { getProductBySlug, products } from "@/config/products";
 import { buildMetadata } from "@/lib/metadata";
 
 interface ProductPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 /** Pre-render a page for every product in products.ts — add a product there, get a page here for free. */
@@ -13,8 +13,9 @@ export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
 
-export function generateMetadata({ params }: ProductPageProps): Metadata {
-  const product = getProductBySlug(params.slug);
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) return buildMetadata({ title: "Product Not Found", path: "/ecosystem" });
 
   return buildMetadata({
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
   });
 }
 
-export default function ProductDetailPage({ params }: ProductPageProps) {
-  const product = getProductBySlug(params.slug);
+export default async function ProductDetailPage({ params }: ProductPageProps) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) notFound();
 
   const isComingSoon = product.status === "coming-soon";
