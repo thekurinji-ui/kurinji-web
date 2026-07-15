@@ -8,7 +8,6 @@ interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }
 
-/** Pre-render a page for every product in products.ts — add a product there, get a page here for free. */
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
