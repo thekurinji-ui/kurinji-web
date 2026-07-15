@@ -5,7 +5,7 @@ import { getPostBySlug, posts } from "@/config/posts";
 import { buildMetadata } from "@/lib/metadata";
 
 interface PostPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 /** Pre-render a page for every post in posts.ts — add a post there, get a page here for free. */
@@ -13,8 +13,9 @@ export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: PostPageProps): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return buildMetadata({ title: "Post Not Found", path: "/blog" });
 
   return buildMetadata({
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: PostPageProps): Metadata {
   });
 }
 
-export default function BlogPostPage({ params }: PostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: PostPageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   return (
