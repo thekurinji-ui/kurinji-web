@@ -1,10 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Named after the Neela Kurinji flower (Strobilanthes kunthiana),
+     which blooms blue-violet across the Nilgiri hills once every 12 years. */
+  --color-ink: #15131c;
+  --color-paper: #fcfbf9;
+  --color-bloom: #5b4a8f;
+  --color-bloom-deep: #2c2140;
+  --color-bloom-light: #8a78be;
+  --color-mist: #edeaf6;
+  --color-muted: #6e6b7a;
+
+  --font-heading: var(--font-fraunces), serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  --animate-bloom-pulse: bloom-pulse 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes bloom-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Custom container: centered, 1.5rem padding, capped at 1240px — same as the old
+   tailwind.config.ts container settings, ported to Tailwind v4's CSS-first API. */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 1240px;
+}
 
 @layer base {
   * {
-    @apply border-mist;
+    border-color: var(--color-mist);
   }
 
   html {
@@ -12,19 +59,23 @@
   }
 
   body {
-    @apply bg-paper text-ink font-body antialiased;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-heading;
+    font-family: var(--font-heading);
   }
 
   /* Visible keyboard focus, never suppressed */
   :focus-visible {
-    @apply outline-none ring-2 ring-bloom ring-offset-2 ring-offset-paper;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-paper), 0 0 0 4px var(--color-bloom);
   }
 }
 
